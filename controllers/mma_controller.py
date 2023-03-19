@@ -15,18 +15,20 @@ class MMAController(Controller):
             ManiuplatorModel(Tp, m3=1.0, r3=0.3),
         ]
         self.i = 0
+        self.Tp = Tp
         self.last_u = np.zeros(2)
         self.last_x = np.zeros(4)
 
     def choose_model(self, x):
         # TODO: Implement procedure of choosing the best fitting model from self.models (by setting self.i)
         x_est = [
-            model.dx(self.last_u, self.last_x) + self.last_x.reshape(4, 1)
+            model.dx(self.last_u, self.last_x) * self.Tp + self.last_x.reshape(4, 1)
             for model in self.models
         ]
 
-        model_errors = [np.linalg.norm(model_x - x.reshape(4, 1)) for model_x in x_est]
+        model_errors = [np.linalg.norm(x_model - x.reshape(4, 1)) for x_model in x_est]
         self.i = model_errors.index(min(model_errors))
+        print(self.i)
 
     def calculate_control(self, x, q_r, q_r_dot, q_r_ddot):
         self.choose_model(x)
