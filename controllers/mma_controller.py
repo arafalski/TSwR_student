@@ -28,7 +28,6 @@ class MMAController(Controller):
 
         model_errors = [np.linalg.norm(x_model - x.reshape(4, 1)) for x_model in x_est]
         self.i = model_errors.index(min(model_errors))
-        print(self.i)
 
     def calculate_control(self, x, q_r, q_r_dot, q_r_ddot):
         self.choose_model(x)
