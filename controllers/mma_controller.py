@@ -38,8 +38,11 @@ class MMAController(Controller):
         q = np.array([[q1], [q2]])
         q_dot = np.array([[q1_dot], [q2_dot]])
 
-        kp = 60
-        kd = 12
+        omega_c = 50
+        xi = 1
+
+        kp = omega_c**2
+        kd = 2 * xi * omega_c
 
         v = (
             q_r_ddot.reshape(2, 1)
