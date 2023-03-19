@@ -20,10 +20,10 @@ class MMAController(Controller):
 
     def choose_model(self, x):
         # TODO: Implement procedure of choosing the best fitting model from self.models (by setting self.i)
-        x_est = []
-
-        for model in self.models:
-            x_est.append(model.dx(self.last_u, self.last_x))
+        x_est = [
+            model.dx(self.last_u, self.last_x) + self.last_x.reshape(4, 1)
+            for model in self.models
+        ]
 
         model_errors = [np.linalg.norm(model_x - x.reshape(4, 1)) for model_x in x_est]
         self.i = model_errors.index(min(model_errors))
