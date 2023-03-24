@@ -14,14 +14,14 @@ Tp = 0.001
 end = 5
 
 # traj_gen = ConstantTorque(np.array([0., 1.0])[:, np.newaxis])
-traj_gen = Sinusoidal(np.array([0., 1.]), np.array([2., 2.]), np.array([0., 0.]))
-# traj_gen = Poly3(np.array([0., 0.]), np.array([pi/4, pi/6]), end)
+# traj_gen = Sinusoidal(np.array([0., 1.]), np.array([2., 2.]), np.array([0., 0.]))
+traj_gen = Poly3(np.array([0., 0.]), np.array([np.pi/4, np.pi/6]), end)
 
 b_est_1 = 2
 b_est_2 = 20
 
-p1 = 100
-p2 = 100
+p1 = 200
+p2 = 200
 
 omega_c_1 = 0.2 * p1
 omega_c_2 = 0.2 * p2
