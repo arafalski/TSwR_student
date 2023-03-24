@@ -9,10 +9,10 @@ class ADRCJointController(Controller):
         self.kp = kp
         self.kd = kd
 
-        A = None
-        B = None
-        L = None
-        W = None
+        A = np.array([[0, 1, 0], [0, 0, 1], [0, 0, 0]])
+        B = np.array([[0], [b], [0]])
+        L = np.array([[3 * p], [3 * p**2], [p**3]])
+        W = np.array([[1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0]])
         self.eso = ESO(A, B, W, L, q0, Tp)
 
     def set_b(self, b):
