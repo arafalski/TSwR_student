@@ -28,7 +28,7 @@ class ADRCJointController(Controller):
         self.eso.update(q, self.last_u)
         _, q_dot_est, f_est = self.eso.get_state()
 
-        u_pd = self.kp * (q_d - q) + self.kd * (q_d_dot - q_dot_est)
+        u_pd = self.kp * (q_d - q) + self.kd * (q_d_dot - q_dot_est) + q_d_ddot
         u = (u_pd - f_est) / self.b
 
         self.last_u = u
