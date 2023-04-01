@@ -12,7 +12,16 @@ class ADRFLController(Controller):
         self.Kp = Kp
         self.Kd = Kd
 
-        self.L = np.array([[3 * p], [3 * p**2], [p**3]])
+        self.L = np.array(
+            [
+                [3 * p, 0],
+                [0, 3 * p],
+                [3 * p**2, 0],
+                [0, 3 * p**2],
+                [p**3, 0],
+                [0, p**3],
+            ]
+        )
 
         W = np.zeros((2, 6))
         W[0:2, 0:2] = np.eye(2)
