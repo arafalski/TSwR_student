@@ -17,28 +17,8 @@ end = 5
 # traj_gen = Sinusoidal(np.array([0., 1.]), np.array([2., 2.]), np.array([0., 0.]))
 traj_gen = Poly3(np.array([0.0, 0.0]), np.array([pi / 4, pi / 6]), end)
 
-l1 = 0.5
-r1 = 0.04
-m1 = 3.0
-l2 = 0.4
-r2 = 0.04
-m2 = 2.4
-I_1 = 1 / 12 * m1 * (3 * r1**2 + l1**2)
-I_2 = 1 / 12 * m2 * (3 * r2**2 + l2**2)
-m3 = 0.1
-r3 = 0.05
-I_3 = 2.0 / 5 * m3 * r3**2
-
-d1 = l1 / 2
-d2 = l2 / 2
-
-alpha = (
-    m1 * d1**2 + I_1 + m2 * (l1**2 + d2**2) + I_2 + m3 * (l1**2 + l2**2) + I_3
-)
-betha = m2 * l1 * d2 + m3 * l1 * l2
-
-b_est_1 = alpha + 2 * betha  # * np.cos(q2)
-b_est_2 = 1 / (m2 * d2**2 + I_2 + m3 * l2**2 + I_3)
+b_est_1 = 1
+b_est_2 = 6
 
 p1 = 200
 p2 = 200
