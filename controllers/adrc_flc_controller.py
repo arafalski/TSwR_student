@@ -71,7 +71,6 @@ class ADRFLController(Controller):
             + q_d_ddot.reshape(2, 1)
         )
         u = M @ (v - f_est) + C @ q_dot_est
-        print(u)
 
         self.last_u = u
         return u.reshape(
